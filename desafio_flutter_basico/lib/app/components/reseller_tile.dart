@@ -1,3 +1,4 @@
+import 'package:desafio_flutter_basico/helper.dart';
 import 'package:flutter/material.dart';
 
 class ResellerTile extends StatelessWidget {
@@ -8,6 +9,7 @@ class ResellerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 110,
       margin: EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -20,6 +22,7 @@ class ResellerTile extends StatelessWidget {
           RotatedBox(
             quarterTurns: -1,
             child: Container(
+              width: 115,
               decoration: BoxDecoration(
                 color: Color(int.parse('0xFF${reseller['cor']}')),
                 borderRadius: BorderRadius.only(
@@ -29,12 +32,14 @@ class ResellerTile extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  reseller['tipo'],
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500),
+                child: Center(
+                  child: Text(
+                    reseller['tipo'],
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
               ),
             ),
@@ -42,14 +47,44 @@ class ResellerTile extends StatelessWidget {
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 margin: EdgeInsets.only(top: 10, left: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Teste'),
-                    Text('Teste'),
+                    Text(
+                      reseller['nome'],
+                      style: TextStyle(color: Colors.grey[900]),
+                    ),
+                    if (reseller['melhorPreco'])
+                      Container(
+                        width: 100,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF2AF56),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            bottomLeft: Radius.circular(5),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.label,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                            Text(
+                              'Melhor Preço',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -61,20 +96,71 @@ class ResellerTile extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text('Nota'),
-                      Text('4.7 *'),
+                      Text(
+                        'Nota',
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            '${reseller['nota']}',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Color(0xFFFBEB60),
+                            size: 18,
+                          )
+                        ],
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      Text('Tempo Médio'),
-                      Text('30-50min'),
+                      Text(
+                        'Tempo Médio',
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '${reseller['tempoMedio']}',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'min',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      Text('Preço'),
-                      Text('R\$ 80,00'),
+                      Text(
+                        'Preço',
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                      Text(
+                        Helper.formatPrice(reseller['preco']),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   )
                 ],
