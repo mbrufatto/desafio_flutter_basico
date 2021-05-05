@@ -31,27 +31,105 @@ class _HomePageState extends State<HomePage> {
         title: Text('Escolha uma Revenda'),
         centerTitle: false,
         actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Icon(
-                  Icons.swap_vert_outlined,
-                  size: 26.0,
-                ),
-              )),
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  margin: EdgeInsets.only(top: 12),
+          PopupMenuButton(
+              icon: Icon(
+                Icons.swap_vert_outlined,
+                size: 26,
+              ),
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Melhor Avaliação',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        Checkbox(
+                          checkColor: Colors.blue,
+                          value: false,
+                          onChanged: (_) {},
+                        )
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Mais Rápido',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        Checkbox(
+                          checkColor: Colors.blue,
+                          value: false,
+                          onChanged: (_) {},
+                        )
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Mais Barato',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        Checkbox(
+                          checkColor: Colors.blue,
+                          value: false,
+                          onChanged: (_) {},
+                        )
+                      ],
+                    ),
+                  ),
+                ];
+              }),
+          PopupMenuButton(
+            icon: Icon(
+              Icons.help,
+              size: 26,
+            ),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
                   child: Text(
-                    '?',
-                    style: TextStyle(fontSize: 24),
+                    'Suporte',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
-              )),
+                PopupMenuItem(
+                  child: Text(
+                    'Termos de Serviço',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ),
+              ];
+            },
+          ),
         ],
       ),
       body: Column(
