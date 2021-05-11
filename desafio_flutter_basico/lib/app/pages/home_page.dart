@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:desafio_flutter_basico/app/components/home_head.dart';
-import 'package:desafio_flutter_basico/app/components/reseller_list.dart';
-import 'package:desafio_flutter_basico/app/components/reseller_tile.dart';
+import 'package:desafio_flutter_basico/app/components/home/home_head.dart';
+import 'package:desafio_flutter_basico/app/components/home/reseller_list.dart';
+import 'package:desafio_flutter_basico/app/components/home/reseller_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -132,6 +132,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      backgroundColor: Colors.grey[200],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
